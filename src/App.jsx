@@ -8,17 +8,22 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/Home'
 import AboutPage from './pages/About'
 import ContactPage from './pages/Contact'
+import CanvasPage from './pages/Canvas'
+import Footer from './component/footer'
 
 function App() {
 
   return (
     <>
-      <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/canvas/:id" element={<CanvasPage />} />
       </Routes>
+
+      <Footer/>
     </>
   )
 }

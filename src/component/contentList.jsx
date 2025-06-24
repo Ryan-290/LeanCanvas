@@ -1,7 +1,7 @@
 import ContentCard from "../component/contentcard";
 import clsx from 'clsx';
 
-export default function ContentList({ BusinessInfo, filteredItems, isView,  }) {
+export default function ContentList({ BusinessInfo, filteredItems, isView,handleDelete }) {
 
   if (BusinessInfo.length === 0) {
     return (
@@ -24,12 +24,14 @@ export default function ContentList({ BusinessInfo, filteredItems, isView,  }) {
         "flex flex-col space-y-4": isView === "list"
       })}>
       {/* 세부 콘텐츠 */}
-      {filteredItems.map((item, Idx) => (
+      {filteredItems.map(item => (
         <ContentCard
-          key={Idx}
+          key={item.id}
+          id={item.id}
           title={item.title}
           date={item.update}
           catagory={item.catagory}
+          handleDelete={handleDelete}
         />
       )
       )}
