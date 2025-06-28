@@ -5,8 +5,6 @@ import { useState } from "react";
 export default function CanvasElement( {children} ) {
 
   const [memos, setMemos] = useState([]);
-  const [memoContent, setMemoContent] = useState();
-  const [editingContent, setEditingContent] = useState(memoContent);
 
   const handleAddMemo = () => {
     const id = Math.random().toString(36).substring(2, 15);
@@ -32,8 +30,8 @@ export default function CanvasElement( {children} ) {
 
   return (
     <div className="x-full ">
-      <div className="flex justify-between items-center bg-gray-100 px-4 py-2">
-        <div className="text-base font-bold">
+      <div className="flex justify-between items-center bg-gray-100 px-2 md:px-4 py-2">
+        <div className="text-sm md:text-base font-bold ">
           {children}
         </div>
         <div className="bg-blue-400 text-white p-1 rounded-md">
@@ -43,7 +41,7 @@ export default function CanvasElement( {children} ) {
           />
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center space-y-2 my-4 min-h-[150px]">
+      <div className="relative flex flex-col justify-center items-center space-y-4 mx-4 my-4 min-h-[150px]">
         {memos.map(memo =>
           <Memo
             key={memo.id}

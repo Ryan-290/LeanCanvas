@@ -15,7 +15,7 @@ export default function Header () {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="sticky top-0 bg-gray-800 text-white px-8">
+    <header className="sticky top-0 bg-gray-800 text-white px-8 z-10">
       <div className="container mx-auto w-auto h-16 flex justify-between items-center">
         <div>
           <Link to="/" className="text-2xl font-bold">Lean Canvas</Link>

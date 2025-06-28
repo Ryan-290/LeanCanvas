@@ -11,7 +11,7 @@ export default function CanvasPage() {
       <CanvasTitle />
       {/* 캔버스 */}
       <div className="w-full h-fit border-[4px] rounded-lg border-gray-800  divide-y divide-gray-300">
-        <div className="grid grid-cols-5 divide-x  divide-gray-300">
+        <div className="grid grid-cols-2 md:grid-cols-5 divide-x  divide-gray-300">
           <CanvasElement> 문제 </CanvasElement>
           <CanvasElement> 해결방안 </CanvasElement>
           <CanvasElement> 가치제안 </CanvasElement>
@@ -24,8 +24,8 @@ export default function CanvasPage() {
           <CanvasElement> 얼리 어답터 </CanvasElement>
         </div>
         <div className="grid grid-cols-2 divide-x divide-gray-300">
-          <CanvasElement> 얼리 어답터 </CanvasElement>
-          <CanvasElement> 얼리 어답터 </CanvasElement>
+          <CanvasElement> 비율구조  </CanvasElement>
+          <CanvasElement> 수익흐름 </CanvasElement>
         </div>
       </div>
     </div>

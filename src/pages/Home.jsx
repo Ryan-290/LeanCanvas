@@ -1,47 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContentList from "../component/contentList";
 import SearchBar from "../component/searchBar";
 import ViewButton from "../component/viewButton";
 
 export default function HomePage() {
 
-  const [BusinessInfo, setBusineesInfo] = useState([
-    {
-      id: "1",
-      title: "ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅎ",
-      desc: "ㅁㄴㅇㄹㅁㄴㄷㄹㅁㄴㅇㄹㄴㅇㅁㄹㅁㄴㄷㄹㅁㅁㄴㅇㄹㄴㅇ",
-      update: "최근 수정일 : 0000.00.00",
-      catagory: "운동",
-    },
-    {
-      id: "2",
-      title: "asdfasdfasdfasdfasdfasd",
-      desc: "asdfasdfasdfasdfasdfasdfa",
-      update: "최근 수정일 : 0000.00.00",
-      catagory: "헬스케어",
-    },
-    {
-      id: "3",
-      title: "DHKTGKTKGKTKHGKPFOGPKGKEGKP",
-      desc: "GJKELFKEOFEKGFOPGKP",
-      update: "최근 수정일 : 0000.00.00",
-      catagory: "물류",
-    },
-    {
-      id: "4",
-      title: "마늘오리마늘오리마늘오리마늘오리",
-      desc: "오리마늘 오리마늘 오리마늘",
-      update: "최근 수정일 : 0000.00.00",
-      catagory: "역량강화",
-    },
-    {
-      id: "5",
-      title: "AAAA",
-      desc: "ABCD",
-      update: "최근 수정일 : 0000.00.00",
-      catagory: "카테고리쓰",
-    },
-  ]);
+  const [BusinessInfo, setBusineesInfo] = useState([]);
+
+  useEffect(() => {
+    fetch("http://http://localhost:8000/canvases")
+    .then(res => res.json())
+    .catch(console.error);
+  }, [])
 
   {/* 그리드 뷰/리스트 뷰 상태값 */ }
   const [isView, setIsView] = useState("grid");

@@ -1,9 +1,18 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaTimes, FaTrash, FaCheck } from "react-icons/fa";
 
 
 export default function Memo({ handleDelete, content, handleUpdate }) {
+
+  const textareaRef = useRef(null);
+  const handleInput = () => {
+    const el = textareaRef.current;
+    if (el) {
+      el.style.height = "auto";
+      el.style.height = `${el.scrollHeight}px`;
+    }
+  }
 
   const [isColor, setIsColor] = useState("gray");
   const [isEditing, setIsEditing] = useState(false);
@@ -28,7 +37,7 @@ export default function Memo({ handleDelete, content, handleUpdate }) {
   return (
     <div
       className={clsx(
-        "relative w-[230px] h-[180px] px-4 py-4",
+        "relative w-full  min-h-[150px] px-4 py-4",
         isColor === "gray" && "bg-gray-200",
         isColor === "pink" && "bg-pink-200",
         isColor === "yellow" && "bg-yellow-200",
@@ -38,11 +47,16 @@ export default function Memo({ handleDelete, content, handleUpdate }) {
     >
       {isEditing ? (
         <div>
-          <textarea
-            className="mt-4 h-fit focus:outline-none"
-            value={editingContent}
-            onChange={(e) => setEditingContent(e.target.value)}
-          />
+          <div>
+            <textarea
+              ref={textareaRef}
+              onInput={handleInput}
+              className="mt-4 mb-4 h-fit w-full focus:outline-none resize-none text-sm md:text-base"
+              placeholder="메모를 입력해주세요"
+              value={editingContent}
+              onChange={(e) => setEditingContent(e.target.value)}
+            />
+          </div>
           <div className="absolute flex space-x-2 bottom-2 left-4 py-2">
             <button
               className="w-[16px] h-[16px] rounded-full bg-gray-300"
@@ -72,7 +86,7 @@ export default function Memo({ handleDelete, content, handleUpdate }) {
         </div>
       ) : (
         <div>
-          <div>
+          <div className="w-full mt-4 break-words whitespace-pre-wrap">
             {content}
           </div>
           <button
