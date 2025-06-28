@@ -5,16 +5,28 @@ import { useState } from "react";
 export default function CanvasElement( {children} ) {
 
   const [memos, setMemos] = useState([]);
+  const [memoContent, setMemoContent] = useState();
+  const [editingContent, setEditingContent] = useState(memoContent);
 
   const handleAddMemo = () => {
     const id = Math.random().toString(36).substring(2, 15);
     const newmemo = {
-      id
+      id,
+      content:"",
     }
     setMemos((prev)=>[...prev, newmemo]);
   }
 
-  const handleDeleteMemo = (id) => {
+  const handleUpdateMemo = (id, updateContent) => {
+    setMemos(prev =>
+      prev.map(memo =>
+        memo.id === id ? {...memo, content:updateContent} : memo
+      )
+    )
+  }
+
+  const handleDeleteMemo = (e,id) => {
+    e.stopPropagation()
     setMemos(prev => prev.filter(memo => memo.id !== id));
   }
 
@@ -35,7 +47,9 @@ export default function CanvasElement( {children} ) {
         {memos.map(memo =>
           <Memo
             key={memo.id}
-            handleDelete={() => handleDeleteMemo(memo.id)}
+            content={memo.content}
+            handleDelete={(e) => handleDeleteMemo(e,memo.id)}
+            handleUpdate={(updateContent) =>handleUpdateMemo(memo.id, updateContent)}
           />
         )}
       </div>
