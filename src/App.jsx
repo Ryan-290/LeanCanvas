@@ -1,4 +1,4 @@
-import Header from './component/Header'
+import Header from './component/common/Header'
 
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
@@ -9,13 +9,13 @@ import HomePage from './pages/Home'
 import AboutPage from './pages/About'
 import ContactPage from './pages/Contact'
 import CanvasPage from './pages/Canvas'
-import Footer from './component/footer'
+import Footer from './component/common/footer'
 
 function App() {
 
   return (
     <>
-      <Header />
+      <Header/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

@@ -57,12 +57,12 @@ export default function HomePage() {
     e.preventDefault();
     e.stopPropagation();
     return (
-      setBusineesInfo(BusinessInfo.filter(target => (target.id !== id)))
+      setBusineesInfo(prev =>prev.filter(target => (target.id !== id)))
     )
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* 검색창 + 그릴/리스트 버튼 */}
       <section>
         <div className="container mx-auto py-16 px-8 sm:px-0">
