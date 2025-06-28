@@ -33,7 +33,7 @@ export default function CanvasTitle() {
           {/* 수정 완료 버튼 */}
           <div className="h-[36px] w-[36px]">
             <button
-              className="flex justify-center items-center bg-yellow-400 rounded-full aspect-[1] p-2 w-full h-full"
+              className="flex justify-center items-center bg-green-400 rounded-full aspect-[1] p-2 w-full h-full"
               onClick={handleEditConfirm}
             >
               <FaCheck className="text-white w-[100%] h-[100%]" />
